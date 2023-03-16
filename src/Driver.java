@@ -13,6 +13,9 @@ public class Driver
         frame.setPreferredSize(scaledSize);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        Toolbar toolbar = new Toolbar(scaledSize);
+        frame.add(toolbar);
+
 
         frame.pack();
         // puts the JFrame in the middle of the physical screen
