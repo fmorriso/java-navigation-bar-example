@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class Toolbar extends JPanel
 {
@@ -21,19 +22,27 @@ public class Toolbar extends JPanel
 
     private void addButtons(JToolBar toolbar)
     {
-        JButton home = new JButton("Home");
-        home.setToolTipText("Home");
-        home.setBackground(BUTTON_BACKGROUND_COLOR);
-        home.setForeground(BUTTON_TEXT_COLOR);
+        JButton home = createButton("Home", "Home");
         toolbar.add(home);
 
-        JButton contact = new JButton("Contact");
-        contact.setToolTipText("Contact Us");
+        JButton contact = createButton("Contact", "Contact us");
         toolbar.add(contact);
 
-        JButton about = new JButton("About");
-        about.setToolTipText("About this application");
+        JButton about = createButton("About", "About this application");
         toolbar.add(about);
 
+        JButton exit = createButton("Exit", "exit application");
+        exit.addActionListener((ActionEvent ae)-> System.exit(0));
+        toolbar.add(exit);
+
+    }
+
+    private static JButton createButton(String text, String toolTipText)
+    {
+        JButton home = new JButton(text);
+        home.setToolTipText(toolTipText);
+        home.setBackground(BUTTON_BACKGROUND_COLOR);
+        home.setForeground(BUTTON_TEXT_COLOR);
+        return home;
     }
 }

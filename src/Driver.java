@@ -16,6 +16,12 @@ public class Driver
         Toolbar toolbar = new Toolbar(scaledSize);
         frame.add(toolbar);
 
+        // define the various pages and keep hidden until activated by the corresponding
+        // navigation toolbar button.
+        //TODO: create pages and add to JFrame
+        HomePage homePage = new HomePage(scaledSize);
+        //frame.add(homePage);
+
         frame.pack();
         // puts the JFrame in the middle of the physical screen
         frame.setLocationRelativeTo(null);
