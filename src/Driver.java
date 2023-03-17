@@ -16,7 +16,6 @@ public class Driver
         Toolbar toolbar = new Toolbar(scaledSize);
         frame.add(toolbar);
 
-
         frame.pack();
         // puts the JFrame in the middle of the physical screen
         frame.setLocationRelativeTo(null);
