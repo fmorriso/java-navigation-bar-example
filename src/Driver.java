@@ -13,6 +13,10 @@ public class Driver
         frame.setPreferredSize(scaledSize);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html
+        //BoxLayout layout = new BoxLayout(frame, BoxLayout.Y_AXIS);
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+
         Toolbar toolbar = new Toolbar(scaledSize);
         frame.add(toolbar);
 
@@ -20,7 +24,7 @@ public class Driver
         // navigation toolbar button.
         //TODO: create pages and add to JFrame
         HomePage homePage = new HomePage(scaledSize);
-        //frame.add(homePage);
+        frame.add(homePage);
 
         frame.pack();
         // puts the JFrame in the middle of the physical screen

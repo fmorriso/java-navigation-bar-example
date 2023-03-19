@@ -10,12 +10,13 @@ public class Toolbar extends JPanel
     {
         super(new BorderLayout());
 
-        int height = (int) ( frameSize.height / 20.0 );
+        int height = (int) ( frameSize.height * 0.05 );
         Dimension toolbarSize = new Dimension(frameSize.width, height);
 
         JToolBar toolbar = new JToolBar("Navigation");
         addButtons(toolbar);
 
+        setSize(toolbarSize);
         setPreferredSize(toolbarSize);
         add(toolbar, BorderLayout.PAGE_START);
     }
@@ -31,6 +32,7 @@ public class Toolbar extends JPanel
         JButton about = createButton("About", "About this application");
         toolbar.add(about);
 
+        // the exit button will close down the application
         JButton exit = createButton("Exit", "exit application");
         exit.addActionListener((ActionEvent ae)-> System.exit(0));
         toolbar.add(exit);
