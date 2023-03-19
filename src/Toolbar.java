@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Toolbar extends JPanel
 {
@@ -24,6 +25,7 @@ public class Toolbar extends JPanel
     private void addButtons(JToolBar toolbar)
     {
         JButton home = createButton("Home", "Home");
+        //TODO: home.addActionListener((ActionEvent ae) -> System.exit(0));
         toolbar.add(home);
 
         JButton contact = createButton("Contact", "Contact us");
