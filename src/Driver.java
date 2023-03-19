@@ -5,16 +5,16 @@ public class Driver
 {
     public static void main(String[] args)
     {
-        Dimension scaledSize = getScaledSize(0.85, 10);
-        System.out.println(scaledSize);
+        Dimension scaledSize = getScaledSize(0.85, 10);        
+        System.out.format("Main page size (w: %d, h: %d): %n",scaledSize.width, scaledSize.height);
 
         JFrame frame = new JFrame("Java Top Navigation Bar Example");
         frame.setSize(scaledSize);
         frame.setPreferredSize(scaledSize);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html
-        //BoxLayout layout = new BoxLayout(frame, BoxLayout.Y_AXIS);
+        // use a layout that stacks everything vertically
+        // https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html        
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
         Toolbar toolbar = new Toolbar(scaledSize);
