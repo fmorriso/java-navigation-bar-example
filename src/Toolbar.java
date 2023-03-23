@@ -7,9 +7,15 @@ public class Toolbar extends JPanel
 {
     private static final Color BUTTON_BACKGROUND_COLOR = Color.BLUE.brighter().brighter();
     private static final Color BUTTON_TEXT_COLOR = Color.WHITE;
-    public Toolbar(Dimension frameSize)
+
+    private static final String pageName = "Toolbar";
+
+    private Controller mvc;
+    public Toolbar(Dimension frameSize, Controller controller)
     {
         super(new BorderLayout());
+
+        mvc = controller;
 
         int height = (int) ( frameSize.height * 0.05 );
         Dimension toolbarSize = new Dimension(frameSize.width, height);
@@ -22,16 +28,20 @@ public class Toolbar extends JPanel
         add(toolbar, BorderLayout.PAGE_START);
     }
 
+    public String getPageName(){ return pageName;}
+
     private void addButtons(JToolBar toolbar)
     {
         JButton home = createButton("Home", "Home");
-        //TODO: home.addActionListener((ActionEvent ae) -> System.exit(0));
+        home.addActionListener( (ActionEvent ae) -> mvc.showPage("HomePage"));
         toolbar.add(home);
 
         JButton contact = createButton("Contact", "Contact us");
+        contact.addActionListener( (ActionEvent ae) -> mvc.showPage("ContactPage"));
         toolbar.add(contact);
 
         JButton about = createButton("About", "About this application");
+        about.addActionListener( (ActionEvent ae) -> mvc.showPage("AboutPage"));
         toolbar.add(about);
 
         // the exit button will close down the application

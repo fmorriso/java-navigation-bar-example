@@ -8,6 +8,8 @@ public class Driver
         Dimension scaledSize = getScaledSize(0.55, 10);
         System.out.format("Main page size (w: %d, h: %d): %n",scaledSize.width, scaledSize.height);
 
+        Controller mvc = new Controller();
+
         JFrame frame = new JFrame("Java Top Navigation Bar Example");
         frame.setSize(scaledSize);
         frame.setPreferredSize(scaledSize);
@@ -17,13 +19,24 @@ public class Driver
         // https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html        
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        Toolbar toolbar = new Toolbar(scaledSize);
+        Toolbar toolbar = new Toolbar(scaledSize, mvc);
         frame.add(toolbar);
 
         // define the various pages and keep hidden until activated by the corresponding
         // navigation toolbar button.
         HomePage homePage = new HomePage(scaledSize);
         frame.add(homePage);
+        mvc.addPanel(homePage);
+
+        AboutPage aboutPage = new AboutPage(scaledSize);
+        frame.add(aboutPage);
+        mvc.addPanel(aboutPage);
+
+        ContactPage contactPage = new ContactPage(scaledSize);
+        frame.add(contactPage);
+        mvc.addPanel(contactPage);
+
+        mvc.showPage(homePage.getPageName());
 
         frame.pack();
         // puts the JFrame in the middle of the physical screen

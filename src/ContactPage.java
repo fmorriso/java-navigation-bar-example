@@ -1,15 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class HomePage extends JPanel
+public class ContactPage extends JPanel
 {
     private Dimension pageSize;
     private CONSTANTS consts;
 
-    private static final String pageName = "HomePage";
+    private static final String pageName = "ContactPage";
 
-    public HomePage(Dimension frameSize)
-    {
+    public ContactPage(Dimension frameSize){
         int height = (int) (frameSize.height * 0.95);
         int width = frameSize.width;
         pageSize = new Dimension(width, height);
@@ -23,14 +22,13 @@ public class HomePage extends JPanel
 
         JLabel top = createTopLabel();
         add(top);
-
     }
 
     public String getPageName(){ return pageName;}
 
     private JLabel createTopLabel()
     {
-        JLabel lbl = new JLabel("Home Page", SwingConstants.CENTER);
+        JLabel lbl = new JLabel("Contact Us Page", SwingConstants.CENTER);
         lbl.setSize(consts.SIZE_H1());
         lbl.setFont(consts.FONT_H1());
         lbl.setBackground(consts.LABEL_COLOR_BACKGROUND());
