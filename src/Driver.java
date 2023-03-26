@@ -5,7 +5,8 @@ public class Driver
 {
     public static void main(String[] args)
     {
-        Dimension scaledSize = getScaledSize(0.67, 10);
+        final int multipleOf = 10;
+        Dimension scaledSize = getScaledSize(0.67, multipleOf);
         System.out.format("Main page size (w: %d, h: %d): %n",scaledSize.width, scaledSize.height);
 
         Controller mvc = new Controller();
@@ -19,8 +20,12 @@ public class Driver
         // https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html        
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        double toolbarHeightPct = 0.05;
-        double panelHeightPct = 1 - toolbarHeightPct;
+        double toolbarHeightPct = 0.04;
+        int toolbarHeight = (int) ( scaledSize.getHeight() * toolbarHeightPct) / multipleOf * multipleOf;
+        Dimension toolbarSize = new Dimension(scaledSize.width, toolbarHeight);
+
+        // use toolbar height to see how much is left for use by panel pages
+        double panelHeightPct = (1 - (toolbarSize.getHeight()/scaledSize.getHeight()));
 
         Toolbar toolbar = new Toolbar(scaledSize, mvc, toolbarHeightPct);
         frame.add(toolbar);
