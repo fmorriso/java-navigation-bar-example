@@ -8,15 +8,16 @@ public class AboutPage extends JPanel
 
     private static final String pageName = "AboutPage";
 
-    public AboutPage(Dimension frameSize){
-        int height = (int) (frameSize.height * 0.95);
-        int width = frameSize.width;
-        pageSize = new Dimension(width, height);
+    public AboutPage(Dimension frameSize, double heightPct)
+    {
+        // use a percentage of the height for the page
+        int height = (int) (frameSize.height * heightPct);
+        pageSize = new Dimension(frameSize.width, height);
         setSize(pageSize);
         setPreferredSize(pageSize);
         consts = new CONSTANTS(pageSize);
 
-        System.out.format("HomePage size (w: %d, h: %d): %n", pageSize.width, pageSize.height);
+        System.out.format("%s size (w: %d, h: %d): %n", pageName, pageSize.width, pageSize.height);
         // change background color to see if page is visible
         setBackground(Color.CYAN);
 

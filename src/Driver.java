@@ -5,7 +5,7 @@ public class Driver
 {
     public static void main(String[] args)
     {
-        Dimension scaledSize = getScaledSize(0.55, 10);
+        Dimension scaledSize = getScaledSize(0.67, 10);
         System.out.format("Main page size (w: %d, h: %d): %n",scaledSize.width, scaledSize.height);
 
         Controller mvc = new Controller();
@@ -19,20 +19,23 @@ public class Driver
         // https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html        
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        Toolbar toolbar = new Toolbar(scaledSize, mvc);
+        double toolbarHeightPct = 0.05;
+        double panelHeightPct = 1 - toolbarHeightPct;
+
+        Toolbar toolbar = new Toolbar(scaledSize, mvc, toolbarHeightPct);
         frame.add(toolbar);
 
         // define the various pages and keep hidden until activated by the corresponding
         // navigation toolbar button.
-        HomePage homePage = new HomePage(scaledSize);
+        HomePage homePage = new HomePage(scaledSize, panelHeightPct);
         frame.add(homePage);
         mvc.addPanel(homePage);
 
-        AboutPage aboutPage = new AboutPage(scaledSize);
+        AboutPage aboutPage = new AboutPage(scaledSize, panelHeightPct);
         frame.add(aboutPage);
         mvc.addPanel(aboutPage);
 
-        ContactPage contactPage = new ContactPage(scaledSize);
+        ContactPage contactPage = new ContactPage(scaledSize,panelHeightPct);
         frame.add(contactPage);
         mvc.addPanel(contactPage);
 

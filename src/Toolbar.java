@@ -11,13 +11,13 @@ public class Toolbar extends JPanel
     private static final String pageName = "Toolbar";
 
     private Controller mvc;
-    public Toolbar(Dimension frameSize, Controller controller)
+    public Toolbar(Dimension frameSize, Controller controller, double pctHeight)
     {
         super(new BorderLayout());
 
         mvc = controller;
-
-        int height = (int) ( frameSize.height * 0.05 );
+        // use a percentage of available height for the toolbar
+        int height = (int) (frameSize.height * pctHeight);
         Dimension toolbarSize = new Dimension(frameSize.width, height);
 
         JToolBar toolbar = new JToolBar("Navigation");

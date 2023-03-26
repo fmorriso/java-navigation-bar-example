@@ -8,11 +8,10 @@ public class HomePage extends JPanel
 
     private static final String pageName = "HomePage";
 
-    public HomePage(Dimension frameSize)
+    public HomePage(Dimension frameSize, double heightPct)
     {
-        int height = (int) (frameSize.height * 0.95);
-        int width = frameSize.width;
-        pageSize = new Dimension(width, height);
+        int height = (int) (frameSize.height * heightPct);
+        pageSize = new Dimension(frameSize.width, height);
         setSize(pageSize);
         setPreferredSize(pageSize);
         consts = new CONSTANTS(pageSize);
